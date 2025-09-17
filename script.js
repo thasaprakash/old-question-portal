@@ -27,7 +27,7 @@ const questionPapers = [
     }
 ];
 
-// --- 2. SEARCH FUNCTIONALITY ---
+// --- 2. SEARCH FUNCTIONALITY (Now Simplified) ---
 const searchButton = document.getElementById('searchButton');
 const searchInput = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('resultsContainer');
@@ -55,12 +55,14 @@ searchButton.addEventListener('click', () => {
         currentResults.forEach(paper => {
             const resultItem = document.createElement('div');
             resultItem.className = 'result-item';
+            
+            // THIS IS THE BIG CHANGE: It's now a simple link (<a>) that opens in a new tab.
             resultItem.innerHTML = `
                 <div>
                     <strong>${paper.title}</strong>
                     <p>Subject: ${paper.subject} | Year: ${paper.year}</p>
                 </div>
-                <button class="view-button" data-url="${paper.url}">View</button>
+                <a href="${paper.url}" class="view-button" target="_blank">View</a>
             `;
             resultsContainer.appendChild(resultItem);
         });
@@ -99,93 +101,6 @@ document.addEventListener('click', e => {
         openModal(analysisModal);
     }
 });
-
-// --- 4. PDF VIEWER FUNCTIONALITY ---
-const pdfViewerModal = document.getElementById("pdfViewerModal");
-const pdfCanvas = document.getElementById("pdf_canvas");
-const pageNumSpan = document.getElementById("page_num");
-const pageCountSpan = document.getElementById("page_count");
-const prevPageBtn = document.getElementById("prevPageBtn");
-const nextPageBtn = document.getElementById("nextPageBtn");
-const downloadPdfBtn = document.getElementById("downloadPdfBtn");
-const closeViewerBtn = document.getElementById("closeViewerBtn");
-let pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null;
-
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
-
-function renderPage(num) {
-    pageRendering = true;
-    pdfDoc.getPage(num).then(page => {
-        const viewport = page.getViewport({ scale: 1.5 });
-        pdfCanvas.height = viewport.height;
-        pdfCanvas.width = viewport.width;
-        const renderContext = { canvasContext: pdfCanvas.getContext('2d'), viewport: viewport };
-        page.render(renderContext).promise.then(() => {
-            pageRendering = false;
-            if (pageNumPending !== null) {
-                renderPage(pageNumPending);
-                pageNumPending = null;
-            }
-        });
-    });
-    pageNumSpan.textContent = num;
-}
-
-function queueRenderPage(num) { if (pageRendering) { pageNumPending = num; } else { renderPage(num); } }
-prevPageBtn.onclick = () => { if (pageNum <= 1) return; pageNum--; queueRenderPage(pageNum); };
-nextPageBtn.onclick = () => { if (pageNum >= pdfDoc.numPages) return; pageNum++; queueRenderPage(pageNum); };
-closeViewerBtn.onclick = () => { pdfViewerModal.style.display = 'none'; pdfDoc = null; };
-
-function showPdf(url) {
-    // THIS IS THE FIX: We use a CORS proxy to load the file.
-    const proxyUrl = 'https://corsproxy.io/?';
-    const proxiedUrl = proxyUrl + url;
-
-    pdfjsLib.getDocument(proxiedUrl).promise.then(pdf => {
-        pdfDoc = pdf;
-        pageCountSpan.textContent = pdfDoc.numPages;
-        pageNum = 1;
-        renderPage(pageNum);
-        downloadPdfBtn.href = url; // The download link is still the direct URL
-        pdfViewerModal.style.display = 'block';
-    }).catch(err => {
-        console.error('Error loading PDF:', err);
-        // The alert from your screenshot happens here
-        alert('Could not load the PDF. Please try downloading instead.');
-    });
-}
-
-document.addEventListener('click', e => {
-    if (e.target && e.target.classList.contains('view-button')) {
-        showPdf(e.target.getAttribute('data-url'));
-    }
-});
-
-// --- 5. TEXT SELECTION POP-UP FUNCTIONALITY ---
-const textSelectionPopup = document.getElementById('text-selection-popup');
-document.addEventListener('mouseup', e => {
-    if (document.getElementById('pdf-render-area').contains(e.target)) {
-        const selectedText = window.getSelection().toString().trim();
-        if (selectedText.length > 0) {
-            textSelectionPopup.style.left = `${e.pageX + 5}px`;
-            textSelectionPopup.style.top = `${e.pageY + 5}px`;
-            textSelectionPopup.style.display = 'block';
-        } else {
-            textSelectionPopup.style.display = 'none';
-        }
-    }
-});
-document.addEventListener('mousedown', e => { if (!textSelectionPopup.contains(e.target)) { textSelectionPopup.style.display = 'none'; } });
-
-document.getElementById('copyTextBtn').onclick = () => {
-    navigator.clipboard.writeText(window.getSelection().toString());
-    textSelectionPopup.style.display = 'none';
-};
-document.getElementById('searchTextBtn').onclick = () => {
-    const searchUrl = `https://gemini.google.com/app/search?q=${encodeURIComponent(window.getSelection().toString())}`;
-    window.open(searchUrl, '_blank');
-    textSelectionPopup.style.display = 'none';
-};
 
 window.onclick = function(event) {
     if (simpleModals.includes(event.target)) {
