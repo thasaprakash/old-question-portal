@@ -137,14 +137,20 @@ nextPageBtn.onclick = () => { if (pageNum >= pdfDoc.numPages) return; pageNum++;
 closeViewerBtn.onclick = () => { pdfViewerModal.style.display = 'none'; pdfDoc = null; };
 
 function showPdf(url) {
-    pdfjsLib.getDocument(url).promise.then(pdf => {
+    // THIS IS THE FIX: We use a CORS proxy to load the file.
+    const proxyUrl = 'https://corsproxy.io/?';
+    const proxiedUrl = proxyUrl + url;
+
+    pdfjsLib.getDocument(proxiedUrl).promise.then(pdf => {
         pdfDoc = pdf;
         pageCountSpan.textContent = pdfDoc.numPages;
         pageNum = 1;
         renderPage(pageNum);
-        downloadPdfBtn.href = url;
+        downloadPdfBtn.href = url; // The download link is still the direct URL
         pdfViewerModal.style.display = 'block';
     }).catch(err => {
+        console.error('Error loading PDF:', err);
+        // The alert from your screenshot happens here
         alert('Could not load the PDF. Please try downloading instead.');
     });
 }
@@ -186,4 +192,4 @@ window.onclick = function(event) {
         closeAllSimpleModals();
     }
 };
-        
+                             
