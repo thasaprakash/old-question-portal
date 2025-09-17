@@ -94,7 +94,7 @@ document.addEventListener('click', e => {
             return acc;
         }, {});
         const sortedTopics = Object.entries(topicCounts).sort(([,a],[,b]) => b-a);
-        let reportHTML = '<ul>' + sortedTopics.map(([topic, count]) => <li>${topic} <span>Appeared in ${count} paper(s)</span></li>).join('') + '</ul>';
+        let reportHTML = '<url>' + sortedTopics.map(([topic, count]) => <li>${topic} <span>Appeared in ${count} paper(s)</span></li>).join('') + '</url>';
         document.getElementById("analysisReportContainer").innerHTML = reportHTML;
         openModal(analysisModal);
     }
@@ -185,4 +185,5 @@ window.onclick = function(event) {
     if (simpleModals.includes(event.target)) {
         closeAllSimpleModals();
     }
+
 };
