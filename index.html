@@ -43,9 +43,9 @@
             <h2>Contact Support</h2>
             <p>For any issues, please contact:</p>
             <ul>
-                <li>Support Team 1: +91 98765 43210</li>
-                <li>Support Team 2: +91 87654 32109</li>
-                <li>Support Team 3: +91 76543 21098</li>
+                <li>Support Team 1: +91 638321 1973</li>
+                <li>Support Team 2: +91 70920 14933</li>
+                <li>Support Team 3: +91 76396 90804</li>
             </ul>
         </div>
     </div>
@@ -57,18 +57,18 @@
             <div class="founders-container">
                 <div class="founder-profile">
                     <img src="founder1.jpg" alt="Founder 1 Photo">
-                    <h3>[Founder 1 Name]</h3>
-                    <p>Lead Developer</p>
+                    <h3>Venugopal M</h3>
+                    <p>B.TECH IT</p>
                 </div>
                 <div class="founder-profile">
                     <img src="founder2.jpg" alt="Founder 2 Photo">
-                    <h3>[Founder 2 Name]</h3>
-                    <p>UI/UX Designer</p>
+                    <h3>Thasaprakash S</h3>
+                    <p>B.TECH IT</p>
                 </div>
                 <div class="founder-profile">
                     <img src="founder3.jpg" alt="Founder 3 Photo">
-                    <h3>[Founder 3 Name]</h3>
-                    <p>Project Manager</p>
+                    <h3>Saravana Bharathi B</h3>
+                    <p>B.TECH IT</p>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2>How to Use the Portal</h2>
-            <p>Welcome to the Question Paper Portal! Finding a paper is easy. Just type the name of the subject you are looking for into the search bar (for example, "Cloud Computing") and click the "Search" button. All matching question papers will instantly appear below. Click the "View" button to open the paper in a new tab to read and download. Happy studying!</p>
+            <p>Welcome to the Question Paper Portal! Finding a paper is easy. Just type the name of the subject you are looking for into the search bar (for example, "Cloud Computing") and click the "Search" button. All matching question papers will instantly appear below. Click the "View" button to open the paper in a viewer to read and download. Happy studying!</p>
         </div>
     </div>
 
@@ -88,7 +88,7 @@
             <h2>Welcome to Dhanalakshmi Srinivasan Group</h2>
             <p style="text-align:center; font-weight: bold;">Admission Helpline - 1800 889 9212</p>
             <div class="about-section">
-                <p>We strive to become the premier institute in India, offering world class education to students and comprehensive health care to all, especially the poor and needy...</p>
+                <p>We strive to become the premier institute in India, offering world class education to students and comprehensive health care to all, especially the poor and needy. We aim to promote research activities in the young and creative minds of our medical students, who are the future doctors to practice the art of medicine with human and ethical values.</p>
             </div>
             <div class="about-section chancellor-desk">
                 <div class="chancellor-photo">
@@ -96,10 +96,31 @@
                 </div>
                 <div class="chancellor-text">
                     <h3>Chancellor's Desk: Shri.A.Srinivasan</h3>
-                    <p>Founded in the year 1994, by Shri .A.Srinivasan, the trust has been in the forefront of providing quality education at affordable cost...</p>
+                    <p>Founded in the year 1994, by Shri .A.Srinivasan, the trust has been in the forefront of providing quality education at affordable cost in the region of Perambalur. The trust founded out of an immense passion for contributing to the society, strives to promote the cause of education.</p>
                 </div>
             </div>
+            <div class="about-section">
+                <h3>Why Dhanalakshmi Srinivasan Group?</h3>
+                <div class="stats-grid">
+                    <div class="stat-item"><b>30000+</b><p>Domestic Students</p></div>
+                    <div class="stat-item"><b>500+</b><p>International Students</p></div>
+                    <div class="stat-item"><b>26+</b><p>Institutions</p></div>
+                    <div class="stat-item"><b>1350+</b><p>On Campus Placement</p></div>
+                    <div class="stat-item"><b>20+</b><p>Funded Research Projects</p></div>
+                    <div class="stat-item"><b>20+</b><p>Patents by Faculty</p></div>
+                    <div class="stat-item"><b>10+</b><p>Hostel</p></div>
+                    <div class="stat-item"><b>3000+</b><p>Staff's</p></div>
+                </div>
             </div>
+            <div class="about-section">
+                 <h3>Contact Info</h3>
+                 <p style="text-align: center;">
+                    Thuraiyur Road, Perambalur, Tamil Nadu, India 621212<br>
+                    +91 - 4328 - 220555 / 220554 | +91 99439 33533<br>
+                    dsgroup@dsgroupmail.com
+                 </p>
+            </div>
+        </div>
     </div>
 
     <div id="analysisModal" class="modal">
@@ -108,6 +129,17 @@
             <h2>Topic Analysis Report</h2>
             <p>This report shows the most frequently covered topics from the selected papers.</p>
             <div id="analysisReportContainer"></div>
+        </div>
+    </div>
+
+    <div id="pdfViewerModal" class="modal pdf-modal">
+        <div class="pdf-viewer-content">
+            <div class="pdf-viewer-header">
+                <h3 id="pdf-title">Question Paper</h3>
+                <a id="downloadPdfBtn" class="download-button" href="#" download>Download</a>
+                <button id="closeViewerBtn" class="close-viewer-btn">&times;</button>
+            </div>
+            <iframe id="pdf-iframe" src="" frameborder="0"></iframe>
         </div>
     </div>
 
