@@ -27,7 +27,7 @@ const questionPapers = [
     }
 ];
 
-// --- 2. SEARCH FUNCTIONALITY (Now Simplified) ---
+// --- 2. SEARCH FUNCTIONALITY ---
 const searchButton = document.getElementById('searchButton');
 const searchInput = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('resultsContainer');
@@ -55,14 +55,12 @@ searchButton.addEventListener('click', () => {
         currentResults.forEach(paper => {
             const resultItem = document.createElement('div');
             resultItem.className = 'result-item';
-            
-            // THIS IS THE BIG CHANGE: It's now a simple link (<a>) that opens in a new tab.
             resultItem.innerHTML = `
                 <div>
                     <strong>${paper.title}</strong>
                     <p>Subject: ${paper.subject} | Year: ${paper.year}</p>
                 </div>
-                <a href="${paper.url}" class="view-button" target="_blank">View</a>
+                <button class="view-button" data-url="${paper.url}" data-title="${paper.title}">View</button>
             `;
             resultsContainer.appendChild(resultItem);
         });
@@ -106,4 +104,34 @@ window.onclick = function(event) {
     if (simpleModals.includes(event.target)) {
         closeAllSimpleModals();
     }
+};
+
+
+// --- 4. SIMPLIFIED PDF VIEWER LOGIC ---
+const pdfViewerModal = document.getElementById('pdfViewerModal');
+const pdfIframe = document.getElementById('pdf-iframe');
+const pdfTitle = document.getElementById('pdf-title');
+const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+const closeViewerBtn = document.getElementById('closeViewerBtn');
+
+// Use event delegation to handle clicks on the dynamically created "View" buttons
+document.addEventListener('click', e => {
+    if (e.target && e.target.classList.contains('view-button')) {
+        const url = e.target.getAttribute('data-url');
+        const title = e.target.getAttribute('data-title');
+        
+        // Set the content for the viewer
+        pdfIframe.src = url;
+        pdfTitle.textContent = title;
+        downloadPdfBtn.href = url;
+        
+        // Show the viewer
+        pdfViewerModal.style.display = 'block';
+    }
+});
+
+// Close the PDF viewer
+closeViewerBtn.onclick = () => {
+    pdfViewerModal.style.display = 'none';
+    pdfIframe.src = ''; // Clear the iframe src to stop loading in the background
 };
