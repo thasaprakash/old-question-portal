@@ -94,7 +94,7 @@ document.addEventListener('click', e => {
             return acc;
         }, {});
         const sortedTopics = Object.entries(topicCounts).sort(([,a],[,b]) => b-a);
-        let reportHTML = '<url>' + sortedTopics.map(([topic, count]) => <li>${topic} <span>Appeared in ${count} paper(s)</span></li>).join('') + '</url>';
+        let reportHTML = '<ul>' + sortedTopics.map(([topic, count]) => `<li>${topic} <span>Appeared in ${count} paper(s)</span></li>`).join('') + '</ul>';
         document.getElementById("analysisReportContainer").innerHTML = reportHTML;
         openModal(analysisModal);
     }
@@ -161,8 +161,8 @@ document.addEventListener('mouseup', e => {
     if (document.getElementById('pdf-render-area').contains(e.target)) {
         const selectedText = window.getSelection().toString().trim();
         if (selectedText.length > 0) {
-            textSelectionPopup.style.left = ${e.pageX + 5}px;
-            textSelectionPopup.style.top = ${e.pageY + 5}px;
+            textSelectionPopup.style.left = `${e.pageX + 5}px`;
+            textSelectionPopup.style.top = `${e.pageY + 5}px`;
             textSelectionPopup.style.display = 'block';
         } else {
             textSelectionPopup.style.display = 'none';
@@ -176,7 +176,7 @@ document.getElementById('copyTextBtn').onclick = () => {
     textSelectionPopup.style.display = 'none';
 };
 document.getElementById('searchTextBtn').onclick = () => {
-    const searchUrl = https;//gemini.google.com/app/search?q=${encodeURIComponent(window.getSelection().toString())};
+    const searchUrl = `https://gemini.google.com/app/search?q=${encodeURIComponent(window.getSelection().toString())}`;
     window.open(searchUrl, '_blank');
     textSelectionPopup.style.display = 'none';
 };
@@ -185,5 +185,5 @@ window.onclick = function(event) {
     if (simpleModals.includes(event.target)) {
         closeAllSimpleModals();
     }
-
 };
+        
