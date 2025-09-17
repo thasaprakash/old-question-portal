@@ -192,4 +192,3 @@ window.onclick = function(event) {
         closeAllSimpleModals();
     }
 };
-                             
