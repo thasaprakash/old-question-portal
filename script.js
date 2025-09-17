@@ -176,7 +176,7 @@ document.getElementById('copyTextBtn').onclick = () => {
     textSelectionPopup.style.display = 'none';
 };
 document.getElementById('searchTextBtn').onclick = () => {
-    const searchUrl = https://gemini.google.com/app/search?q=${encodeURIComponent(window.getSelection().toString())};
+    const searchUrl = https;//gemini.google.com/app/search?q=${encodeURIComponent(window.getSelection().toString())};
     window.open(searchUrl, '_blank');
     textSelectionPopup.style.display = 'none';
 };
