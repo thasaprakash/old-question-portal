@@ -19,7 +19,8 @@ const searchButton = document.getElementById('searchButton');
 const searchInput = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('resultsContainer');
 const analysisSection = document.getElementById('analysis-section');
-const suggestionsContainer = document.getElementById('suggestionsContainer'); // Get the new container
+// Get the new suggestions container
+const suggestionsContainer = document.getElementById('suggestionsContainer');
 let currentResults = [];
 
 function performSearch() {
@@ -27,7 +28,8 @@ function performSearch() {
     resultsContainer.innerHTML = '';
     analysisSection.innerHTML = '';
     currentResults = [];
-    suggestionsContainer.innerHTML = ''; // Clear suggestions when searching
+    // Clear suggestions when a full search is performed
+    suggestionsContainer.innerHTML = ''; 
     if (!query) { return; }
     
     currentResults = questionPapers.filter(paper => paper.subject.toLowerCase().includes(query));
@@ -59,16 +61,17 @@ function performSearch() {
     }
 }
 
-// Function to show suggestions
+// New function to show live suggestions
 function showSuggestions() {
     const query = searchInput.value.toLowerCase().trim();
-    suggestionsContainer.innerHTML = ''; // Clear previous suggestions
+    suggestionsContainer.innerHTML = ''; // Clear old suggestions
     if (!query) {
-        return;
+        return; // Exit if the search box is empty
     }
 
-    const uniqueSubjects = [...new Set(questionPapers.map(paper => paper.subject.toLowerCase()))];
-    const filteredSubjects = uniqueSubjects.filter(subject => subject.includes(query));
+    // Get a unique list of subjects from the database
+    const uniqueSubjects = [...new Set(questionPapers.map(paper => paper.subject))];
+    const filteredSubjects = uniqueSubjects.filter(subject => subject.toLowerCase().includes(query));
 
     if (filteredSubjects.length > 0) {
         filteredSubjects.forEach(subject => {
@@ -77,23 +80,26 @@ function showSuggestions() {
             suggestionItem.textContent = subject;
             suggestionItem.addEventListener('click', () => {
                 searchInput.value = subject;
-                suggestionsContainer.innerHTML = ''; // Clear suggestions
-                performSearch(); // Automatically perform search
+                suggestionsContainer.innerHTML = ''; // Hide suggestions after selection
+                performSearch(); // Immediately perform the search for the selected subject
             });
             suggestionsContainer.appendChild(suggestionItem);
         });
     }
 }
 
+// Event listeners for the search functionality
 searchButton.addEventListener('click', performSearch);
 searchInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         performSearch();
     }
 });
-searchInput.addEventListener('input', showSuggestions); // Add this line to show suggestions as the user types
 
-// Hide suggestions when clicking outside
+// Add the new event listener for live suggestions
+searchInput.addEventListener('input', showSuggestions);
+
+// Optional: Hide suggestions when clicking anywhere else on the page
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.search-section')) {
         suggestionsContainer.innerHTML = '';
