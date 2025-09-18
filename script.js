@@ -2,15 +2,15 @@
 const questionPapers = [
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024',
-        url: 'https://github.com/thasaprakash/old-question-portal/blob/main/cloud%20computing_2024.pdf'
+        url: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024.pdf'
     },
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024 (Set 2)',
-        url: 'https://github.com/thasaprakash/old-question-portal/blob/main/cloud%20computing_2024(1).pdf'
+        url: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024(1).pdf'
     },
     {
         subject: 'Cloud Computing', year: 2023, title: 'Cloud Computing QP 2023',
-        url: 'https://github.com/thasaprakash/old-question-portal/blob/main/cloud%20computing_2023.pdf'
+        url: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2023.pdf'
     },
     {
         subject: 'Cloud Computing', year: 2023, title: 'Cloud Computing QP 2023 (Set 2)',
@@ -22,7 +22,7 @@ const questionPapers = [
     }
 ];
 
-// --- 2. SEARCH FUNCTIONALITY (Final Version) ---
+// --- 2. SEARCH FUNCTIONALITY (Simplified and Final Version) ---
 const searchButton = document.getElementById('searchButton');
 const searchInput = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('resultsContainer');
@@ -40,12 +40,8 @@ searchButton.addEventListener('click', () => {
             const resultItem = document.createElement('div');
             resultItem.className = 'result-item';
 
-            // IMPORTANT CHANGE HERE: We create a special link for viewing
-            // It MUST be the link with "/blob/" not "/raw/"
-            const viewUrl = `https://htmlpreview.github.io/?${paper.url.replace('/raw/', '/blob/')}`;
-            
-            // The download URL is still the direct "/raw/" link
-            const downloadUrl = paper.url.replace('/blob/', '/raw/');
+            // Ensure the URL is the direct download link (/raw/)
+            const rawUrl = paper.url.replace('/blob/', '/raw/');
 
             resultItem.innerHTML = `
                 <div>
@@ -53,8 +49,8 @@ searchButton.addEventListener('click', () => {
                     <p>Subject: ${paper.subject} | Year: ${paper.year}</p>
                 </div>
                 <div class="button-group">
-                    <a href="${viewUrl}" class="view-button" target="_blank">View</a>
-                    <a href="${downloadUrl}" class="download-button" download>Download</a>
+                    <a href="${rawUrl}" class="view-button" target="_blank">View</a>
+                    <a href="${rawUrl}" class="download-button" download>Download</a>
                 </div>
             `;
             resultsContainer.appendChild(resultItem);
@@ -94,3 +90,4 @@ window.onclick = function(event) {
         closeAllSimpleModals();
     }
 };
+
