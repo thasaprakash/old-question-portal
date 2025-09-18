@@ -54,7 +54,6 @@ h1 { color: #fecb00; font-size: 2.2rem; font-weight: 700; text-shadow: 2px 2px 4
     backdrop-filter: blur(4px); 
     width: 100%; 
     box-sizing: border-box; 
-    /* Add this to allow for absolute positioning of suggestions */
     position: relative; 
 }
 .search-instruction { color: #555; font-size: 1rem; margin-top: 0; margin-bottom: 20px; }
@@ -64,10 +63,9 @@ h1 { color: #fecb00; font-size: 2.2rem; font-weight: 700; text-shadow: 2px 2px 4
 #searchButton { padding: 14px 22px; background-color: #0056b3; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; }
 #searchButton:hover { background-color: #00418a; transform: translateY(-2px); }
 
-/* New styles for the suggestions dropdown */
 #suggestionsContainer {
     position: absolute;
-    top: 155px; /* Adjust this value to position it correctly below the search box */
+    top: 155px; 
     left: 25px;
     right: 25px;
     background-color: #fff;
@@ -127,6 +125,41 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; background: none; pad
 .pdf-viewer-content { width: 100%; height: 100%; display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; }
 .pdf-viewer-header { background-color: #333; color: white; padding: 10px; display: flex; align-items: center; justify-content: space-between; }
 #pdf-iframe { width: 100%; height: 100%; border: none; }
+
+/* New styles for the contact and map sections */
+.contact-details {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.contact-details h4 {
+    margin: 0 0 10px 0;
+    color: #0056b3;
+}
+
+.contact-details p {
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+.contact-details a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.reach-us-section {
+    text-align: left;
+}
+
+.map-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+/* End of new styles */
+
 
 @media (max-width: 768px) {
     body { display: block; height: auto; overflow-y: auto; }
