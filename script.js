@@ -19,6 +19,7 @@ const searchButton = document.getElementById('searchButton');
 const searchInput = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('resultsContainer');
 const analysisSection = document.getElementById('analysis-section');
+const suggestionsContainer = document.getElementById('suggestionsContainer'); // Get the new container
 let currentResults = [];
 
 function performSearch() {
@@ -26,13 +27,14 @@ function performSearch() {
     resultsContainer.innerHTML = '';
     analysisSection.innerHTML = '';
     currentResults = [];
+    suggestionsContainer.innerHTML = ''; // Clear suggestions when searching
     if (!query) { return; }
     
     currentResults = questionPapers.filter(paper => paper.subject.toLowerCase().includes(query));
     if (currentResults.length > 0) {
         if (currentResults.length >= 2) {
             const analyseBtn = document.createElement('button');
-            analyseBtn.className = 'analysis-btn'; // Re-use button style
+            analyseBtn.className = 'analysis-btn';
             analyseBtn.innerText = '📊 Analyse Topics';
             analyseBtn.id = 'analyseTopicsBtn';
             analysisSection.appendChild(analyseBtn);
@@ -57,12 +59,47 @@ function performSearch() {
     }
 }
 
+// Function to show suggestions
+function showSuggestions() {
+    const query = searchInput.value.toLowerCase().trim();
+    suggestionsContainer.innerHTML = ''; // Clear previous suggestions
+    if (!query) {
+        return;
+    }
+
+    const uniqueSubjects = [...new Set(questionPapers.map(paper => paper.subject.toLowerCase()))];
+    const filteredSubjects = uniqueSubjects.filter(subject => subject.includes(query));
+
+    if (filteredSubjects.length > 0) {
+        filteredSubjects.forEach(subject => {
+            const suggestionItem = document.createElement('div');
+            suggestionItem.className = 'suggestion-item';
+            suggestionItem.textContent = subject;
+            suggestionItem.addEventListener('click', () => {
+                searchInput.value = subject;
+                suggestionsContainer.innerHTML = ''; // Clear suggestions
+                performSearch(); // Automatically perform search
+            });
+            suggestionsContainer.appendChild(suggestionItem);
+        });
+    }
+}
+
 searchButton.addEventListener('click', performSearch);
 searchInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         performSearch();
     }
 });
+searchInput.addEventListener('input', showSuggestions); // Add this line to show suggestions as the user types
+
+// Hide suggestions when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-section')) {
+        suggestionsContainer.innerHTML = '';
+    }
+});
+
 
 // --- 3. MODAL FUNCTIONALITY ---
 const allModals = document.querySelectorAll('.modal');
@@ -109,6 +146,4 @@ document.addEventListener('click', e => {
 closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
-};                           
-
-
+};
