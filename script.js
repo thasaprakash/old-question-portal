@@ -32,7 +32,7 @@ function performSearch() {
     if (currentResults.length > 0) {
         if (currentResults.length >= 2) {
             const analyseBtn = document.createElement('button');
-            analyseBtn.className = 'analysis-btn view-button'; // Re-use button style
+            analyseBtn.className = 'analysis-btn'; // Re-use button style
             analyseBtn.innerText = '📊 Analyse Topics';
             analyseBtn.id = 'analyseTopicsBtn';
             analysisSection.appendChild(analyseBtn);
@@ -110,3 +110,4 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };                           
+
