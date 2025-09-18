@@ -2,9 +2,7 @@
 const questionPapers = [
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024',
-        // IMPORTANT: Use the Google Drive /preview link for viewing
         viewUrl: 'https://drive.google.com/file/d/1nXoHSITN-dBCAMa0Ng-HZ5WYBocrSKfL/preview',
-        // IMPORTANT: Use the GitHub /raw/ link for downloading
         downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024.pdf'
     },
     {
@@ -58,14 +56,12 @@ const closeViewerBtn = document.getElementById('closeViewerBtn');
 function openModal(modal) { modal.style.display = "block"; }
 function closeAllModals() { allModals.forEach(m => m.style.display = "none"); }
 
-// Event listeners for simple modals
 document.getElementById("contactBtn").onclick = () => openModal(document.getElementById("contactModal"));
 document.getElementById("foundersBtn").onclick = () => openModal(document.getElementById("foundersModal"));
-document.getElementById("helpBtn").onclick = () => openModal(document.getElementById("helpBtn"));
+document.getElementById("helpBtn").onclick = () => openModal(document.getElementById("helpModal"));
 document.getElementById("aboutCollegeBtn").onclick = () => openModal(document.getElementById("aboutCollegeModal"));
 document.querySelectorAll('.modal .close-btn').forEach(btn => { btn.onclick = closeAllModals; });
 
-// Event delegation for the "View" buttons
 document.addEventListener('click', e => {
     if (e.target && e.target.classList.contains('view-button')) {
         const url = e.target.getAttribute('data-url');
@@ -82,5 +78,5 @@ document.addEventListener('click', e => {
 
 closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
-    pdfIframe.src = ''; // Clear the iframe to stop loading
+    pdfIframe.src = '';
 };
