@@ -4,6 +4,8 @@ body {
 .background-container { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
 .top-left-corner { position: absolute; width: 100%; height: 100%; background-color: #0056b3; clip-path: polygon(0 0, 100% 0, 0 100%); z-index: 1; }
 .bottom-right-corner { position: absolute; width: 100%; height: 100%; background-color: #fecb00; clip-path: polygon(100% 0, 100% 100%, 0 100%); z-index: 0; }
+
+/* --- THIS IS THE SCROLLING FIX FOR LAPTOP --- */
 .content-wrapper {
     position: absolute;
     top: 50%;
@@ -17,48 +19,63 @@ body {
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
-    max-height: 95vh; /* Limit the height of the entire white box */
-    overflow-y: auto;  /* The scrollbar for the white box on DESKTOP */
+    max-height: 95vh; /* Limits the height of the white box */
+    overflow-y: auto;  /* THIS IS THE SCROLLBAR FOR THE WHITE BOX */
 }
-.university-details { margin-bottom: 25px; }
+
+.university-details { 
+    margin-bottom: 25px; 
+    flex-shrink: 0;
+}
 .university-logo { width: 90px; height: auto; margin-bottom: 15px; background: #fff; border-radius: 50%; padding: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 h1 { color: #fecb00; font-family: "Impact", "Arial Black", sans-serif; font-size: 1.8em; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); line-height: 1.3; margin: 0; }
-.search-section { background-color: #ffffff; padding: 20px; border-radius: 16px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); width: 100%; box-sizing: border-box; }
+.search-section { 
+    background-color: #ffffff; 
+    padding: 20px; 
+    border-radius: 16px; 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
+    width: 100%; 
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Important flexbox fix */
+}
 .search-instruction { color: #555; font-size: 1em; margin-top: 0; margin-bottom: 15px; }
 .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
 #searchInput { flex-grow: 1; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
 #searchButton { padding: 12px 20px; background-color: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; }
 .result-item { background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 15px; margin-top: 10px; text-align: left; display: flex; justify-content: space-between; align-items: center; }
-
-/* --- THIS IS THE TEST TO CONFIRM THE FILE IS UPDATED --- */
-#resultsContainer {
-    background-color: #e0ffe0; /* Light green for testing */
-    /* Once it works, you can delete the line above */
-}
-
 .button-group { display: flex; gap: 10px; }
-.view-button, .download-button { text-decoration: none; display: inline-block; padding: 8px 12px; border-radius: 5px; font-weight: bold; font-size: 0.9em; border: none; cursor: pointer; }
 .view-button { background-color: #17a2b8; color: white; }
 .download-button { background-color: #28a745; color: white !important; }
+.view-button, .download-button { text-decoration: none; display: inline-block; padding: 8px 12px; border-radius: 5px; font-weight: bold; font-size: 0.9em; border: none; cursor: pointer; }
+footer { position: fixed; bottom: 0; left: 0; width: 100%; background: none; padding: 15px 0; text-align: center; z-index: 100; display: flex; justify-content: center; gap: 10px; }
+.footer-btn { background-color: #0056b3; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.modal-content { max-height: 90vh; overflow-y: auto; }
 
+/* --- THIS IS THE SCROLLING FIX FOR PHONE --- */
 @media (max-width: 768px) {
     body {
-        display: block; /* Change from flex to block */
-        height: auto;   /* Allow body to grow */
-        overflow-y: auto; /* The ENTIRE PAGE will now scroll */
+        display: block;
+        height: auto;
+        overflow-y: auto; /* The entire page will scroll */
     }
     .content-wrapper {
-        position: relative; /* No longer fixed in the center */
+        position: relative;
         top: auto;
         left: auto;
         transform: none;
         margin-top: 30px;
         margin-bottom: 20px;
-        max-height: none; /* Remove height limit */
-        overflow-y: visible; /* Content should not scroll inside this box */
+        padding-left: 15px;
+        padding-right: 15px;
+        max-height: none; /* Let the content grow */
+        overflow-y: visible; /* Do not scroll inside the box */
     }
     h1 { font-size: 1.7em; }
     .university-logo { width: 85px; }
     .search-box { flex-direction: column; }
     .result-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+    footer { position: relative; background-color: #f8f9fa; padding: 10px; }
+    .footer-btn { padding: 10px 18px; font-size: 14px; }
 }
