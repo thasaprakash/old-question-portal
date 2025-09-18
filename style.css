@@ -23,6 +23,29 @@ body {
 .top-left-corner { position: absolute; width: 100%; height: 100%; background-color: #0056b3; clip-path: polygon(0 0, 100% 0, 0 100%); z-index: 1; }
 .bottom-right-corner { position: absolute; width: 100%; height: 100%; background-color: #fecb00; clip-path: polygon(100% 0, 100% 100%, 0 100%); z-index: 0; }
 
+/* New container for social media icons */
+.social-icons-container {
+    position: absolute;
+    top: 20px;
+    right: 70px; /* Adjust this value to position it relative to the button */
+    display: flex;
+    gap: 15px; /* Spacing between icons */
+    z-index: 200;
+}
+
+.social-icons-container img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.social-icons-container img:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+
 .content-wrapper {
     position: absolute;
     top: 50%;
@@ -171,4 +194,12 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; background: none; pad
     .result-item { flex-direction: column; align-items: flex-start; gap: 15px; }
     footer { position: relative; background-color: #f8f9fa; padding: 10px; }
     .founders-container, .chancellor-desk { flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+    
+    /* Adjust social icons for smaller screens */
+    .social-icons-container {
+        position: static;
+        margin-top: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 }
