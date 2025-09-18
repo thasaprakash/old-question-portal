@@ -77,7 +77,7 @@ function closeAllModals() { allModals.forEach(m => m.style.display = "none"); }
 
 document.getElementById("contactBtn").onclick = () => openModal(document.getElementById("contactModal"));
 document.getElementById("foundersBtn").onclick = () => openModal(document.getElementById("foundersModal"));
-document.getElementById("helpBtn").onclick = () => openModal(document.getElementById("helpBtn"));
+document.getElementById("helpBtn").onclick = () => openModal(document.getElementById("helpModal"));
 document.getElementById("aboutCollegeBtn").onclick = () => openModal(document.getElementById("aboutCollegeModal"));
 document.querySelectorAll('.modal .close-btn').forEach(btn => { btn.onclick = closeAllModals; });
 
@@ -110,4 +110,5 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };                           
+
 
