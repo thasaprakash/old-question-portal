@@ -134,22 +134,17 @@ document.addEventListener('click', e => {
         openModal(document.getElementById("analysisModal"));
     }
 });
-
 document.addEventListener('click', e => {
     if (e.target && e.target.classList.contains('view-button')) {
+        // Get the direct Google Drive URL from the data-url attribute
         const url = e.target.getAttribute('data-url');
-        const title = e.target.getAttribute('data-title');
-        const downloadUrl = e.target.getAttribute('data-download');
         
-        pdfIframe.src = url;
-        pdfTitle.textContent = title;
-        downloadPdfBtn.href = downloadUrl;
-        
-        pdfViewerModal.style.display = 'block';
+        // Open the URL in a new tab, allowing users to use Google Drive's native features
+        window.open(url, '_blank');
     }
 });
-
 closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };
+
