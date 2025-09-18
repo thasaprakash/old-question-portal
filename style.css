@@ -4,11 +4,12 @@ body {
 .background-container { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
 .top-left-corner { position: absolute; width: 100%; height: 100%; background-color: #0056b3; clip-path: polygon(0 0, 100% 0, 0 100%); z-index: 1; }
 .bottom-right-corner { position: absolute; width: 100%; height: 100%; background-color: #FFD700; clip-path: polygon(100% 0, 100% 100%, 0 100%); z-index: 0; }
-.content-wrapper { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 700px; text-align: center; z-index: 2; display: flex; flex-direction: column; padding: 20px; box-sizing: border-box; max-height: 90vh; overflow-y: auto; }
-.university-details { display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 30px; }
-.university-logo { width: 150px; }
-h1 { color: #FFD700; font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); line-height: 1.2; margin: 0; }
-.search-section { background-color: rgba(255, 255, 255, 0.9); padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+.content-wrapper { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 600px; text-align: center; z-index: 2; display: flex; flex-direction: column; padding: 20px; box-sizing: border-box; max-height: 90vh; overflow-y: auto; }
+.university-details { display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 25px; }
+.university-logo { width: 100px; height: auto; margin-bottom: 15px; }
+h1 { color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); line-height: 1.2; margin: 0; }
+.search-section { background-color: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); width: 100%; box-sizing: border-box; }
+.search-instruction { color: #0056b3; font-size: 1.1em; margin-bottom: 15px; }
 .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
 #searchInput { flex-grow: 1; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
 #searchButton { padding: 12px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
@@ -16,11 +17,11 @@ h1 { color: #FFD700; font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.
 .button-group { display: flex; gap: 10px; }
 .view-button { background-color: #17a2b8; color: white; border: none; cursor: pointer; }
 .download-button { background-color: #28a745; color: white !important; }
-.preview-button, .view-button, .download-button { text-decoration: none; display: inline-block; padding: 8px 12px; border-radius: 5px; font-weight: bold; font-size: 0.9em; }
+.view-button, .download-button { text-decoration: none; display: inline-block; padding: 8px 12px; border-radius: 5px; font-weight: bold; font-size: 0.9em; }
 footer { position: fixed; bottom: 0; left: 0; width: 100%; background-color: rgba(0, 0, 0, 0.1); padding: 10px 0; text-align: center; z-index: 100; }
 .footer-btn { background-color: #0056b3; color: white; border: none; padding: 10px 20px; margin: 0 10px; border-radius: 5px; cursor: pointer; }
 .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); }
-.modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border-radius: 10px; width: 80%; max-width: 500px; position: relative; }
+.modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; position: relative; }
 .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
 .about-college-btn { position: absolute; top: 20px; right: 20px; z-index: 101; background-color: #FFD700; color: #0056b3; border: 2px solid #0056b3; width: 40px; height: 40px; border-radius: 50%; font-size: 24px; font-weight: bold; cursor: pointer; }
 .founders-container { display: flex; justify-content: space-around; text-align: center; }
@@ -28,11 +29,6 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; background-color: rgb
 .modal-lg { max-width: 800px; }
 .about-section { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
 .chancellor-desk { display: flex; align-items: center; gap: 20px; }
-.chancellor-photo img { width: 120px; border-radius: 50%; }
-#analysis-section { margin-bottom: 20px; }
-.analysis-btn { background-color: #ffc107; color: #333; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; }
-#analysisReportContainer ul { list-style-type: none; padding: 0; }
-#analysisReportContainer li { background-color: #f9f9f9; padding: 12px; margin-bottom: 8px; border-radius: 4px; display: flex; justify-content: space-between; }
 .pdf-modal { padding: 20px; box-sizing: border-box; }
 .pdf-viewer-content { width: 100%; height: 100%; background: #525659; display: flex; flex-direction: column; border-radius: 8px; overflow: hidden;}
 .pdf-viewer-header { background-color: #333; color: white; padding: 10px; display: flex; align-items: center; justify-content: space-between; }
@@ -41,7 +37,9 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; background-color: rgb
 
 @media (max-width: 768px) {
     body { display: block; height: auto; overflow-y: auto; }
-    .content-wrapper { position: relative; top: auto; left: auto; transform: none; }
+    .content-wrapper { position: relative; top: auto; left: auto; transform: none; max-height: none; overflow-y: visible; padding: 20px 15px; margin-top: 50px; }
+    h1 { font-size: 1.5em; }
+    .university-logo { width: 80px; }
     .result-item { flex-direction: column; align-items: flex-start; gap: 10px; }
     .founders-container, .chancellor-desk { flex-direction: column; align-items: center; gap: 20px; }
     .pdf-modal { padding: 5px; }
