@@ -27,33 +27,33 @@ function performSearch() {
     analysisSection.innerHTML = '';
     currentResults = [];
     if (!query) { return; }
-    
-    currentResults = questionPapers.filter(paper => paper.subject.toLowerCase().includes(query));
-    if (currentResults.length > 0) {
-        if (currentResults.length >= 2) {
-            const analyseBtn = document.createElement('button');
-            analyseBtn.className = 'analysis-btn view-button'; // Re-use button style
-            analyseBtn.innerText = '📊 Analyse Topics';
-            analyseBtn.id = 'analyseTopicsBtn';
-            analysisSection.appendChild(analyseBtn);
-        }
-        currentResults.forEach(paper => {
-            const resultItem = document.createElement('div');
-            resultItem.className = 'result-item';
-            resultItem.innerHTML = `
-                <div>
-                    <strong>${paper.title}</strong>
-                    <p>Subject: ${paper.subject} | Year: ${paper.year}</p>
-                </div>
-                <div class="button-group">
-                    <button class="view-button" data-url="${paper.viewUrl}" data-title="${paper.title}" data-download="${paper.downloadUrl}">View</button>
-                    <a href="${paper.downloadUrl}" class="download-button" download>Download</a>
-                </div>
-            `;
-            resultsContainer.appendChild(resultItem);
-        });
-    } else {
-        resultsContainer.innerHTML = '<p>No papers found.</p>';
+
+    currentResults = questionPapers.filter(paper => paper.subject.toLowerCase().includes(query));  
+    if (currentResults.length > 0) {  
+        if (currentResults.length >= 2) {  
+            const analyseBtn = document.createElement('button');  
+            analyseBtn.className = 'analysis-btn view-button'; 
+            analyseBtn.innerText = '📊 Analyse Topics';  
+            analyseBtn.id = 'analyseTopicsBtn';  
+            analysisSection.appendChild(analyseBtn);  
+        }  
+        currentResults.forEach(paper => {  
+            const resultItem = document.createElement('div');  
+            resultItem.className = 'result-item';  
+            resultItem.innerHTML = `  
+                <div>  
+                    <strong>${paper.title}</strong>  
+                    <p>Subject: ${paper.subject} | Year: ${paper.year}</p>  
+                </div>  
+                <div class="button-group">  
+                    <button class="view-button" data-url="${paper.viewUrl}" data-title="${paper.title}" data-download="${paper.downloadUrl}">View</button>  
+                    <a href="${paper.downloadUrl}" class="download-button" download>Download</a>  
+                </div>  
+            `;  
+            resultsContainer.appendChild(resultItem);  
+        });  
+    } else {  
+        resultsContainer.innerHTML = '<p>No papers found.</p>';  
     }
 }
 
@@ -77,7 +77,7 @@ function closeAllModals() { allModals.forEach(m => m.style.display = "none"); }
 
 document.getElementById("contactBtn").onclick = () => openModal(document.getElementById("contactModal"));
 document.getElementById("foundersBtn").onclick = () => openModal(document.getElementById("foundersModal"));
-document.getElementById("helpBtn").onclick = () => openModal(document.getElementById("helpBtn"));
+document.getElementById("helpBtn").onclick = () => openModal(document.getElementById("helpModal"));
 document.getElementById("aboutCollegeBtn").onclick = () => openModal(document.getElementById("aboutCollegeModal"));
 document.querySelectorAll('.modal .close-btn').forEach(btn => { btn.onclick = closeAllModals; });
 
@@ -86,7 +86,11 @@ document.addEventListener('click', e => {
         const allTopics = currentResults.flatMap(paper => paper.topics || []);
         const topicCounts = allTopics.reduce((acc, topic) => { acc[topic] = (acc[topic] || 0) + 1; return acc; }, {});
         const sortedTopics = Object.entries(topicCounts).sort(([,a],[,b]) => b-a);
+
+        // --- FIX #2: TOPIC ANALYSIS REPORT ---
+        // Changed single quotes to backticks (`) to correctly display the variables.
         let reportHTML = '<ul>' + sortedTopics.map(([topic, count]) => `<li>${topic} <span>Appeared in ${count} paper(s)</span></li>`).join('') + '</ul>';
+        
         document.getElementById("analysisReportContainer").innerHTML = reportHTML;
         openModal(document.getElementById("analysisModal"));
     }
@@ -97,12 +101,12 @@ document.addEventListener('click', e => {
         const url = e.target.getAttribute('data-url');
         const title = e.target.getAttribute('data-title');
         const downloadUrl = e.target.getAttribute('data-download');
+
+        pdfIframe.src = url;  
+        pdfTitle.textContent = title;  
+        downloadPdfBtn.href = downloadUrl;  
         
-        pdfIframe.src = url;
-        pdfTitle.textContent = title;
-        downloadPdfBtn.href = downloadUrl;
-        
-        pdfViewerModal.style.display = 'block';
+        pdfViewerModal.style.display = 'block';  
     }
 });
 
