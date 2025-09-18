@@ -2,92 +2,113 @@
 const questionPapers = [
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024',
-        url: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024.pdf'
+        // IMPORTANT: Use the Google Drive /preview link for viewing
+        viewUrl: 'https://drive.google.com/file/d/1nXoHSITN-dBCAMa0Ng-HZ5WYBocrSKfL/preview',
+        // IMPORTANT: Use the GitHub /raw/ link for downloading
+        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024.pdf',
+        topics: ['Serverless', 'AWS', 'Azure', 'Data Centers', 'Virtualization']
     },
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024 (Set 2)',
-        url: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024(1).pdf'
-    },
-    {
-        subject: 'Cloud Computing', year: 2023, title: 'Cloud Computing QP 2023',
-        url: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2023.pdf'
-    },
-    {
-        subject: 'Cloud Computing', year: 2023, title: 'Cloud Computing QP 2023 (Set 2)',
-        url: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2023(2).pdf'
-    },
-    {
-        subject: 'Cloud Computing', year: 2023, title: 'Cloud Computing QP 2023 (Set 3)',
-        url: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2023(1).pdf'
+        viewUrl: 'https://drive.google.com/file/d/1mwIDAWxcfvOzPj6OzaWwjuz141_NxXaY/preview',
+        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024(1).pdf',
+        topics: ['Virtualization', 'SaaS', 'IaaS', 'PaaS', 'Load Balancing']
     }
+    // ... ADD ALL YOUR OTHER PAPERS HERE
 ];
 
-// --- 2. SEARCH FUNCTIONALITY (Simplified and Final Version) ---
+// --- 2. SEARCH FUNCTIONALITY ---
 const searchButton = document.getElementById('searchButton');
 const searchInput = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('resultsContainer');
+const analysisSection = document.getElementById('analysis-section');
+let currentResults = [];
 
 searchButton.addEventListener('click', () => {
     const query = searchInput.value.toLowerCase().trim();
     resultsContainer.innerHTML = '';
-    if (!query) {
-        resultsContainer.innerHTML = '<p>Please enter a subject to search.</p>';
-        return;
-    }
-    const results = questionPapers.filter(paper => paper.subject.toLowerCase().includes(query));
-    if (results.length > 0) {
-        results.forEach(paper => {
+    analysisSection.innerHTML = '';
+    currentResults = [];
+    if (!query) { return; }
+    
+    currentResults = questionPapers.filter(paper => paper.subject.toLowerCase().includes(query));
+    if (currentResults.length > 0) {
+        if (currentResults.length >= 2) {
+            const analyseBtn = document.createElement('button');
+            analyseBtn.className = 'analysis-btn';
+            analyseBtn.innerText = '📊 Analyse Topics';
+            analyseBtn.id = 'analyseTopicsBtn';
+            analysisSection.appendChild(analyseBtn);
+        }
+        currentResults.forEach(paper => {
             const resultItem = document.createElement('div');
             resultItem.className = 'result-item';
-
-            // Ensure the URL is the direct download link (/raw/)
-            const rawUrl = paper.url.replace('/blob/', '/raw/');
-
             resultItem.innerHTML = `
                 <div>
                     <strong>${paper.title}</strong>
                     <p>Subject: ${paper.subject} | Year: ${paper.year}</p>
                 </div>
                 <div class="button-group">
-                    <a href="${rawUrl}" class="view-button" target="_blank">View</a>
-                    <a href="${rawUrl}" class="download-button" download>Download</a>
+                    <button class="view-button" data-url="${paper.viewUrl}" data-title="${paper.title}" data-download="${paper.downloadUrl}">View</button>
+                    <a href="${paper.downloadUrl}" class="download-button" download>Download</a>
                 </div>
             `;
             resultsContainer.appendChild(resultItem);
         });
     } else {
-        resultsContainer.innerHTML = '<p>Sorry, no question papers found for that subject.</p>';
+        resultsContainer.innerHTML = '<p>No papers found.</p>';
     }
 });
 
-// --- 3. SIMPLE MODAL FUNCTIONALITY ---
-const contactModal = document.getElementById("contactModal");
-const foundersModal = document.getElementById("foundersModal");
-const helpModal = document.getElementById("helpModal");
-const aboutCollegeModal = document.getElementById("aboutCollegeModal");
-const simpleModals = [contactModal, foundersModal, helpModal, aboutCollegeModal];
+// --- 3. MODAL FUNCTIONALITY ---
+const allModals = document.querySelectorAll('.modal');
+const pdfViewerModal = document.getElementById('pdfViewerModal');
+const pdfIframe = document.getElementById('pdf-iframe');
+const pdfTitle = document.getElementById('pdf-title');
+const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+const closeViewerBtn = document.getElementById('closeViewerBtn');
 
-function openModal(modal) {
-    modal.style.display = "block";
-}
-function closeAllSimpleModals() {
-    simpleModals.forEach(m => {
-        m.style.display = "none";
-    });
-}
+function openModal(modal) { modal.style.display = "block"; }
+function closeAllModals() { allModals.forEach(m => m.style.display = "none"); }
 
-document.getElementById("contactBtn").onclick = () => openModal(contactModal);
-document.getElementById("foundersBtn").onclick = () => openModal(foundersModal);
-document.getElementById("helpBtn").onclick = () => openModal(helpModal);
-document.getElementById("aboutCollegeBtn").onclick = () => openModal(aboutCollegeModal);
+// Event listeners for simple modals
+document.getElementById("contactBtn").onclick = () => openModal(document.getElementById("contactModal"));
+document.getElementById("foundersBtn").onclick = () => openModal(document.getElementById("foundersModal"));
+document.getElementById("helpBtn").onclick = () => openModal(document.getElementById("helpBtn"));
+document.getElementById("aboutCollegeBtn").onclick = () => openModal(document.getElementById("aboutCollegeModal"));
+document.querySelectorAll('.modal .close-btn').forEach(btn => { btn.onclick = closeAllModals; });
 
-document.querySelectorAll('.modal .close-btn').forEach(btn => {
-    btn.onclick = closeAllSimpleModals;
+// Event listener for analysis modal button
+document.addEventListener('click', e => {
+    if (e.target && e.target.id === 'analyseTopicsBtn') {
+        const allTopics = currentResults.flatMap(paper => paper.topics || []);
+        const topicCounts = allTopics.reduce((acc, topic) => {
+            acc[topic] = (acc[topic] || 0) + 1;
+            return acc;
+        }, {});
+        const sortedTopics = Object.entries(topicCounts).sort(([,a],[,b]) => b-a);
+        let reportHTML = '<ul>' + sortedTopics.map(([topic, count]) => `<li>${topic} <span>Appeared in ${count} paper(s)</span></li>`).join('') + '</ul>';
+        document.getElementById("analysisReportContainer").innerHTML = reportHTML;
+        openModal(document.getElementById("analysisModal"));
+    }
 });
 
-window.onclick = function(event) {
-    if (simpleModals.includes(event.target)) {
-        closeAllSimpleModals();
+// Event delegation for the "View" buttons
+document.addEventListener('click', e => {
+    if (e.target && e.target.classList.contains('view-button')) {
+        const url = e.target.getAttribute('data-url');
+        const title = e.target.getAttribute('data-title');
+        const downloadUrl = e.target.getAttribute('data-download');
+        
+        pdfIframe.src = url;
+        pdfTitle.textContent = title;
+        downloadPdfBtn.href = downloadUrl;
+        
+        pdfViewerModal.style.display = 'block';
     }
+});
+
+closeViewerBtn.onclick = () => {
+    pdfViewerModal.style.display = 'none';
+    pdfIframe.src = ''; // Clear the iframe to stop loading
 };
-
