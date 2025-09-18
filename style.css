@@ -46,13 +46,56 @@ body {
 h1 { color: #fecb00; font-size: 2.2rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); line-height: 1.2; margin: 0; }
 .sub-heading { color: #fff; font-size: 1rem; font-weight: 400; opacity: 0.9; margin-top: 5px; }
 
-.search-section { background-color: rgba(255, 255, 255, 0.98); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15); backdrop-filter: blur(4px); width: 100%; box-sizing: border-box; }
+.search-section { 
+    background-color: rgba(255, 255, 255, 0.98); 
+    padding: 25px; 
+    border-radius: 16px; 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15); 
+    backdrop-filter: blur(4px); 
+    width: 100%; 
+    box-sizing: border-box; 
+    /* Add this to allow for absolute positioning of suggestions */
+    position: relative; 
+}
 .search-instruction { color: #555; font-size: 1rem; margin-top: 0; margin-bottom: 20px; }
 .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
 #searchInput { flex-grow: 1; padding: 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; font-family: 'Poppins', sans-serif; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
 #searchInput:focus { border-color: #0056b3; box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2); outline: none; }
 #searchButton { padding: 14px 22px; background-color: #0056b3; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; }
 #searchButton:hover { background-color: #00418a; transform: translateY(-2px); }
+
+/* New styles for the suggestions dropdown */
+#suggestionsContainer {
+    position: absolute;
+    top: 155px; /* Adjust this value to position it correctly below the search box */
+    left: 25px;
+    right: 25px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.suggestion-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+/* End of new styles */
 
 #resultsContainer { max-height: 300px; overflow-y: auto; padding-right: 10px; }
 .result-item { background-color: #fff; border: 1px solid #eee; border-radius: 8px; padding: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
@@ -95,4 +138,4 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; background: none; pad
     .result-item { flex-direction: column; align-items: flex-start; gap: 15px; }
     footer { position: relative; background-color: #f8f9fa; padding: 10px; }
     .founders-container, .chancellor-desk { flex-direction: column; align-items: center; gap: 20px; text-align: center; }
-                     }
+}
