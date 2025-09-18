@@ -2,32 +2,42 @@
 const questionPapers = [
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024',
-        // IMPORTANT: Use the Google Drive /preview link for viewing
         viewUrl: 'https://drive.google.com/file/d/1nXoHSITN-dBCAMa0Ng-HZ5WYBocrSKfL/preview',
-        // IMPORTANT: Use the GitHub /raw/ link for downloading
-        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024.pdf'
+        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024.pdf',
+        topics: ['Serverless', 'AWS', 'Azure', 'Data Centers', 'Virtualization']
     },
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024 (Set 2)',
         viewUrl: 'https://drive.google.com/file/d/1mwIDAWxcfvOzPj6OzaWwjuz141_NxXaY/preview',
-        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024(1).pdf'
+        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024(1).pdf',
+        topics: ['Virtualization', 'SaaS', 'IaaS', 'PaaS', 'Load Balancing']
     }
-    // ... ADD ALL YOUR OTHER PAPERS HERE
 ];
 
 // --- 2. SEARCH FUNCTIONALITY ---
 const searchButton = document.getElementById('searchButton');
 const searchInput = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('resultsContainer');
+const analysisSection = document.getElementById('analysis-section');
+let currentResults = [];
 
-searchButton.addEventListener('click', () => {
+function performSearch() {
     const query = searchInput.value.toLowerCase().trim();
     resultsContainer.innerHTML = '';
+    analysisSection.innerHTML = '';
+    currentResults = [];
     if (!query) { return; }
     
-    const results = questionPapers.filter(paper => paper.subject.toLowerCase().includes(query));
-    if (results.length > 0) {
-        results.forEach(paper => {
+    currentResults = questionPapers.filter(paper => paper.subject.toLowerCase().includes(query));
+    if (currentResults.length > 0) {
+        if (currentResults.length >= 2) {
+            const analyseBtn = document.createElement('button');
+            analyseBtn.className = 'analysis-btn view-button'; // Re-use button style
+            analyseBtn.innerText = '📊 Analyse Topics';
+            analyseBtn.id = 'analyseTopicsBtn';
+            analysisSection.appendChild(analyseBtn);
+        }
+        currentResults.forEach(paper => {
             const resultItem = document.createElement('div');
             resultItem.className = 'result-item';
             resultItem.innerHTML = `
@@ -45,6 +55,13 @@ searchButton.addEventListener('click', () => {
     } else {
         resultsContainer.innerHTML = '<p>No papers found.</p>';
     }
+}
+
+searchButton.addEventListener('click', performSearch);
+searchInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        performSearch();
+    }
 });
 
 // --- 3. MODAL FUNCTIONALITY ---
@@ -60,9 +77,20 @@ function closeAllModals() { allModals.forEach(m => m.style.display = "none"); }
 
 document.getElementById("contactBtn").onclick = () => openModal(document.getElementById("contactModal"));
 document.getElementById("foundersBtn").onclick = () => openModal(document.getElementById("foundersModal"));
-document.getElementById("helpBtn").onclick = () => openModal(document.getElementById("helpModal"));
+document.getElementById("helpBtn").onclick = () => openModal(document.getElementById("helpBtn"));
 document.getElementById("aboutCollegeBtn").onclick = () => openModal(document.getElementById("aboutCollegeModal"));
 document.querySelectorAll('.modal .close-btn').forEach(btn => { btn.onclick = closeAllModals; });
+
+document.addEventListener('click', e => {
+    if (e.target && e.target.id === 'analyseTopicsBtn') {
+        const allTopics = currentResults.flatMap(paper => paper.topics || []);
+        const topicCounts = allTopics.reduce((acc, topic) => { acc[topic] = (acc[topic] || 0) + 1; return acc; }, {});
+        const sortedTopics = Object.entries(topicCounts).sort(([,a],[,b]) => b-a);
+        let reportHTML = '<ul>' + sortedTopics.map(([topic, count]) => `<li>${topic} <span>Appeared in ${count} paper(s)</span></li>`).join('') + '</ul>';
+        document.getElementById("analysisReportContainer").innerHTML = reportHTML;
+        openModal(document.getElementById("analysisModal"));
+    }
+});
 
 document.addEventListener('click', e => {
     if (e.target && e.target.classList.contains('view-button')) {
