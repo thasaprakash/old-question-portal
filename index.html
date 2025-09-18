@@ -4,27 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhanalakshmi Srinivasan Question Papers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="background-container">
-        <button id="aboutCollegeBtn" class="about-college-btn">i</button>
+        <button id="aboutCollegeBtn" class="about-college-btn" title="About College">i</button>
         <div class="top-left-corner"></div>
         <div class="bottom-right-corner"></div>
         <div class="content-wrapper">
             
             <div class="university-details">
                 <img src="dhanalakshmi_srinivasan_logo.png" alt="University Logo" class="university-logo">
-                <h1>DHANALAKSHMI SRINIVASAN<br>ENGINEERING COLLEGE<br>(Autonomous)<br>Perambalur - 621212</h1>
+                <h1>DHANALAKSHMI SRINIVASAN<br>ENGINEERING COLLEGE</h1>
+                <p class="sub-heading">(Autonomous) Perambalur - 621212</p>
             </div>
 
             <div class="search-section">
-                <p class="search-instruction">Search for subjects like Cloud Computing and Data Structures...</p>
+                <p class="search-instruction">Search for subjects like Cloud Computing...</p>
                 <div class="search-box">
                     <input type="text" id="searchInput" placeholder="Enter subject name...">
                     <button id="searchButton">Search</button>
                 </div>
+                <div id="analysis-section"></div>
                 <div id="resultsContainer"></div>
             </div>
 
@@ -32,7 +37,7 @@
     </div>
 
     <footer>
-        <button id="contactBtn" class="footer-btn">For Enquiry☎️</button>
+        <button id="contactBtn" class="footer-btn">Enquiry</button>
         <button id="foundersBtn" class="footer-btn">Founders</button>
         <button id="helpBtn" class="footer-btn">Help</button>
     </footer>
@@ -40,7 +45,7 @@
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>For enquiry</h2>
+            <h2>Contact Information</h2>
             <ul>
                 <li>Helpline 1: +91 638321 1973</li>
                 <li>Helpline 2: +91 70920 14933</li>
@@ -63,33 +68,27 @@
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2>How to Use</h2>
-            <p>Welcome! Type a subject and click 'Search'. Results will appear below. Click 'View' to see the paper in a pop-up, or click 'Download' to save the file.</p>
+            <p>Welcome! Type a subject and click 'Search' or press Enter. Results will appear below. Click 'View' to preview the paper in a pop-up, or 'Download' to save the file directly.</p>
         </div>
     </div>
     <div id="aboutCollegeModal" class="modal">
         <div class="modal-content modal-lg">
             <span class="close-btn">&times;</span>
-            <h2>Welcome to Dhanalakshmi Srinivasan Engineering</h2>
-            <p style="text-align:center; font-weight: bold;">Contact- 1800 889 9212</p>
-            <div class="about-section">
-                <p>We strive to become the premier institute in India, offering world class education to students and comprehensive health care to all, especially the poor and needy. We aim to promote research activities in the young and creative minds of our medical students, who are the future doctors to practice the art of medicine with human and ethical values.</p>
-            </div>
+            <h2>Welcome to DSEC</h2>
             <div class="about-section chancellor-desk">
                 <div class="chancellor-photo"><img src="chancellor_photo.jpg" alt="Chancellor"></div>
                 <div class="chancellor-text">
-                    <h3>Chancellor's Desk: Shri.A.Srinivasan</h3>
-                    <p>Founded in the year 1994, by Shri .A.Srinivasan, the trust has been in the forefront of providing quality education at affordable cost in the region of Perambalur. The trust founded out of an immense passion for contributing to the society, strives to promote the cause of education.</p>
+                    <h3>Chancellor's Desk: Shri. A. Srinivasan</h3>
+                    <p>Founded in 1994, the trust has been a leader in providing quality education at an affordable cost in the Perambalur region, driven by a passion for contributing to society.</p>
                 </div>
             </div>
-             <div class="about-section">
-                <h3>Why Dhanalakshmi Srinivasan Group?</h3>
-                <div class="stats-grid">
-                    <div class="stat-item"><b>30000+</b><p>Domestic Students👨‍🎓</p></div>
-                    <div class="stat-item"><b>500+</b><p>Other State Students👨‍🎓</p></div>
-                    <div class="stat-item"><b>26+</b><p>Institutions🏬</p></div>
-                    <div class="stat-item"><b>1350+</b><p>On Campus Placement💯</p></div>
-                </div>
-            </div>
+        </div>
+    </div>
+    <div id="analysisModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Topic Analysis Report</h2>
+            <div id="analysisReportContainer"></div>
         </div>
     </div>
     
@@ -107,5 +106,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
