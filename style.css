@@ -135,7 +135,28 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; background: none; pad
 .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
 .modal-content { background-color: #fff; margin: 10vh auto; padding: 25px; border-radius: 12px; width: 90%; max-width: 500px; position: relative; max-height: 80vh; overflow-y: auto; }
 .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-.about-college-btn { /* Style unchanged */ }
+.about-college-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none; /* No background color */
+    border: none;    /* No border */
+    padding: 0;
+    cursor: pointer;
+    z-index: 200;
+    transition: transform 0.2s ease;
+}
+
+.about-college-btn img {
+    width: 40px;  /* Adjust size as needed */
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add a subtle shadow */
+}
+
+.about-college-btn:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
 .founders-container { display: flex; justify-content: space-around; }
 .founder-profile img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
 .modal-lg { max-width: 800px; }
@@ -203,3 +224,4 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; background: none; pad
         flex-wrap: wrap;
     }
 }
+
