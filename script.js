@@ -12,12 +12,6 @@ const questionPapers = [
         downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024(1).pdf',
         topics: ['Virtualization', 'SaaS', 'IaaS', 'PaaS', 'Load Balancing']
     }
-    {
-        subject: 'Manufacturing Technology', year: 2024, title: 'Manufacturing Technology',
-        viewUrl: 'https://drive.google.com/file/d/1mwIDAWxcfvOzPj6OzaWwjuz141_NxXaY/preview',
-        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/U23RAT34%20%E2%80%93%20Manufacturing%20Technology(Q).pdf',
-        topics: ['cffdyrtfdrt']
-    }
 ];
 
 // --- 2. SEARCH FUNCTIONALITY ---
@@ -153,6 +147,7 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };
+
 
 
 
