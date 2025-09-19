@@ -11,8 +11,8 @@ const questionPapers = [
         downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024(1).pdf',
     },
     {
-        subject: 'Manufacturing Technology', year: 2024, title: 'Manufacturing Technology_2024',
-        viewUrl: 'https://drive.google.com/file/d/1mwIDAWxcfvOzPj6OzaWwjuz141_NxXaY/preview',
+        subject: 'Manufacturing Technology', year: 2024, title: 'Manufacturing Technology QP 2024',
+        viewUrl: 'https://drive.google.com/file/d/1kph5Tmnor0AeEACvVM75w3PVlBDLKzAm/preview',
         downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/Manufacturing%20Technology_2024.pdf',
     }
 ];
@@ -37,7 +37,7 @@ function performSearch() {
     
     currentResults = questionPapers.filter(paper => paper.subject.toLowerCase().includes(query));
     if (currentResults.length > 0) {
-        if (currentResults.length >= 2) {
+        if (currentResults.length >= 3) {
             const analyseBtn = document.createElement('button');
             analyseBtn.className = 'analysis-btn';
             analyseBtn.innerText = '📊 Analyse Topics';
@@ -150,6 +150,7 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };
+
 
 
 
