@@ -224,6 +224,41 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; background: none; pad
         flex-wrap: wrap;
     }
 }
+/* New styles for the 'About College' stats section with icons */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
 
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
 
+.stat-icon {
+    width: 50px; /* Adjust size of icons */
+    height: 50px;
+    margin-bottom: 10px;
+}
 
+.stat-item b {
+    font-size: 1.5rem;
+    color: #0056b3;
+}
+
+.stat-item p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #555;
+    line-height: 1.2;
+}
+
+/* End of new stats section styles */
