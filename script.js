@@ -14,7 +14,15 @@ const questionPapers = [
         subject: 'Manufacturing Technology', year: 2024, title: 'Manufacturing Technology QP 2024',
         viewUrl: 'https://drive.google.com/file/d/1kph5Tmnor0AeEACvVM75w3PVlBDLKzAm/preview',
         downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/Manufacturing%20Technology_2024.pdf',
-    }
+    },
+    {
+        subject: 'Design of Steel Structural Elements', year: '2024', title: 'CE8601 Design of Steel Structural Elements (Q) - Copy',
+        viewUrl: 'https://drive.google.com/file/d/108uREqT10H45RUwAxthJTSC6tBc5Q1-2/preview',
+        downloadUrl: '
+
+Here',
+
+},
 ];
 
 // --- 2. SEARCH FUNCTIONALITY ---
@@ -150,6 +158,7 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };
+
 
 
 
