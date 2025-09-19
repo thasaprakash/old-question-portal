@@ -150,7 +150,7 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; background: none; pad
 .about-college-btn img {
     width: 40px;  /* Adjust size as needed */
     height: 40px;
-    border-radius: 0%;
+    border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add a subtle shadow */
 }
 
@@ -224,5 +224,6 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; background: none; pad
         flex-wrap: wrap;
     }
 }
+
 
 
