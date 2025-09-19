@@ -3,8 +3,7 @@ const questionPapers = [
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024',
         viewUrl: 'https://drive.google.com/file/d/1nXoHSITN-dBCAMa0Ng-HZ5WYBocrSKfL/preview',
-        downloadUrl: 'https://raw.githubusercontent.com/thasaprakash/old-question-portal/2392d5bd85b673901506340da089de5890782942/cloud computing_2024.pdf
-', 
+        downloadUrl: 'https://raw.githubusercontent.com/thasaprakash/old-question-portal/2392d5bd85b673901506340da089de5890782942/cloud computing_2024.pdf', 
     },
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024 (Set 2)',
@@ -156,6 +155,7 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };
+
 
 
 
