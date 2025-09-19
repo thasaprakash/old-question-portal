@@ -12,7 +12,7 @@ const questionPapers = [
     },
     {
         subject: 'Manufacturing Technology', year: 2024, title: 'Manufacturing Technology QP 2024',
-        viewUrl: 'https://drive.google.com/file/d/1kph5Tmnor0AeEACvVM75w3PVlBDLKzAm/preview',
+        viewUrl: '',
         downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/Manufacturing%20Technology_2024.pdf',
     }
 ];
@@ -150,6 +150,7 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };
+
 
 
 
