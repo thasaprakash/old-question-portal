@@ -37,7 +37,7 @@ function performSearch() {
     
     currentResults = questionPapers.filter(paper => paper.subject.toLowerCase().includes(query));
     if (currentResults.length > 0) {
-        if (currentResults.length >= 3) {
+        if (currentResults.length >= 99999999) {
             const analyseBtn = document.createElement('button');
             analyseBtn.className = 'analysis-btn';
             analyseBtn.innerText = '📊 Analyse Topics';
