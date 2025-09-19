@@ -11,7 +11,7 @@ const questionPapers = [
         viewUrl: 'https://drive.google.com/file/d/1mwIDAWxcfvOzPj6OzaWwjuz141_NxXaY/preview',
         downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024(1).pdf',
         topics: ['Virtualization', 'SaaS', 'IaaS', 'PaaS', 'Load Balancing']
-    }
+    },
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024 (Set 2)',
         viewUrl: 'https://drive.google.com/file/d/1mwIDAWxcfvOzPj6OzaWwjuz141_NxXaY/preview',
@@ -153,6 +153,7 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };
+
 
 
 
