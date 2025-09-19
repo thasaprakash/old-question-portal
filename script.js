@@ -17,7 +17,7 @@ const questionPapers = [
     },
     {
         subject: 'Design of Steel Structural Elements', year: '2024', title: 'CE8601 Design of Steel Structural Elements (Q) - Copy',
-        viewUrl: 'https://drive.google.com/file/d/108uREqT10H45RUwAxthJTSC6tBc5Q1-2/preview',
+        viewUrl: 'https://drive.google.com/file/d/1nILaCUAPy4-bmaNX53ouEzM8jR6dftLe/preview',
         downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/CE8601-%20Design%20of%20Steel%20Structural%20Elements(Q)%20-%20Copy%20-%20Copy.pdf',
     }
 ];
@@ -155,6 +155,7 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };
+
 
 
 
