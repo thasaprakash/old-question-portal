@@ -13,9 +13,9 @@ const questionPapers = [
         topics: ['Virtualization', 'SaaS', 'IaaS', 'PaaS', 'Load Balancing']
     }
     {
-        subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024 (Set 2)',
+        subject: 'Manufacturing Technology', year: 2024, title: 'Manufacturing Technology',
         viewUrl: 'https://drive.google.com/file/d/1mwIDAWxcfvOzPj6OzaWwjuz141_NxXaY/preview',
-        downloadUrl: '',
+        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/U23RAT34%20%E2%80%93%20Manufacturing%20Technology(Q).pdf',
         topics: ['Virtualization', 'SaaS', 'IaaS', 'PaaS', 'Load Balancing']
     }
 ];
@@ -153,5 +153,6 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };
+
 
 
