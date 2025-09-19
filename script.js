@@ -3,20 +3,17 @@ const questionPapers = [
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024',
         viewUrl: 'https://drive.google.com/file/d/1nXoHSITN-dBCAMa0Ng-HZ5WYBocrSKfL/preview',
-        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024.pdf',
-        topics: ['Serverless', 'AWS', 'Azure', 'Data Centers', 'Virtualization']
+        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024.pdf', 
     },
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024 (Set 2)',
         viewUrl: 'https://drive.google.com/file/d/1mwIDAWxcfvOzPj6OzaWwjuz141_NxXaY/preview',
         downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024(1).pdf',
-        topics: ['Virtualization', 'SaaS', 'IaaS', 'PaaS', 'Load Balancing']
     },
     {
         subject: 'Manufacturing Technology', year: 2024, title: 'Manufacturing Technology_2024',
         viewUrl: 'https://drive.google.com/file/d/1mwIDAWxcfvOzPj6OzaWwjuz141_NxXaY/preview',
         downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/Manufacturing%20Technology_2024.pdf',
-        topics: ['Virtualization', 'SaaS', 'IaaS', 'PaaS', 'Load Balancing']
     }
 ];
 
@@ -153,6 +150,7 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };
+
 
 
 
