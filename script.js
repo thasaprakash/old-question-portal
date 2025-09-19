@@ -3,22 +3,23 @@ const questionPapers = [
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024',
         viewUrl: 'https://drive.google.com/file/d/1nXoHSITN-dBCAMa0Ng-HZ5WYBocrSKfL/preview',
-        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024.pdf', 
+        downloadUrl: 'https://raw.githubusercontent.com/thasaprakash/old-question-portal/2392d5bd85b673901506340da089de5890782942/cloud computing_2024.pdf
+', 
     },
     {
         subject: 'Cloud Computing', year: 2024, title: 'Cloud Computing QP 2024 (Set 2)',
         viewUrl: 'https://drive.google.com/file/d/1mwIDAWxcfvOzPj6OzaWwjuz141_NxXaY/preview',
-        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/cloud%20computing_2024(1).pdf',
+        downloadUrl: 'https://raw.githubusercontent.com/thasaprakash/old-question-portal/2392d5bd85b673901506340da089de5890782942/cloud computing_2024(1).pdf',
     },
     {
         subject: 'Manufacturing Technology', year: 2024, title: 'Manufacturing Technology QP 2024',
         viewUrl: 'https://drive.google.com/file/d/1kph5Tmnor0AeEACvVM75w3PVlBDLKzAm/preview',
-        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/Manufacturing%20Technology_2024.pdf',
+        downloadUrl: 'https://raw.githubusercontent.com/thasaprakash/old-question-portal/2392d5bd85b673901506340da089de5890782942/Manufacturing Technology_2024.pdf',
     },
     {
         subject: 'Design of Steel Structural Elements', year: '2024', title: 'CE8601 Design of Steel Structural Elements (Q) - Copy',
         viewUrl: 'https://drive.google.com/file/d/1nILaCUAPy4-bmaNX53ouEzM8jR6dftLe/preview',
-        downloadUrl: 'https://github.com/thasaprakash/old-question-portal/raw/main/CE8601-%20Design%20of%20Steel%20Structural%20Elements(Q)%20-%20Copy%20-%20Copy.pdf',
+        downloadUrl: 'https://raw.githubusercontent.com/thasaprakash/old-question-portal/2392d5bd85b673901506340da089de5890782942/CE8601- Design of Steel Structural Elements(Q) - Copy - Copy.pdf',
     }
 ];
 
@@ -155,6 +156,7 @@ closeViewerBtn.onclick = () => {
     pdfViewerModal.style.display = 'none';
     pdfIframe.src = '';
 };
+
 
 
 
