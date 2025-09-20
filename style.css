@@ -23,7 +23,7 @@ body {
 .top-left-corner { position: absolute; width: 100%; height: 100%; background-color: #0056b3; clip-path: polygon(0 0, 100% 0, 0 100%); z-index: 1; }
 .bottom-right-corner { position: absolute; width: 100%; height: 100%; background-color: #fecb00; clip-path: polygon(100% 0, 100% 100%, 0 100%); z-index: 0; }
 
-/* Social media icons container */
+/* New container for social media icons */
 .social-icons-container {
     position: absolute;
     top: 20px;
@@ -33,12 +33,13 @@ body {
     z-index: 200;
 }
 
-/* 🟢 CRITICAL FIX: Ensure no background or padding on the social icon links themselves */
+/* 🔴 FIX: Target the anchor tag and set background to none with !important, and remove any padding/border. */
 .social-icons-container a {
     display: inline-block;
-    background: none !important; /* Force no background */
-    padding: 0 !important;       /* Force no padding */
-    border-radius: 0 !important;  /* Remove any circular border-radius from the link */
+    background: none !important; /* Ensure no background */
+    border: none !important;     /* Ensure no border */
+    border-radius: 0 !important; /* Ensure no rounded corners from a default background */
+    padding: 0 !important;       /* Ensure no padding creates a background area */
     transition: transform 0.2s ease, opacity 0.2s ease;
     cursor: pointer;
 }
@@ -138,14 +139,13 @@ h1 { color: #fecb00; font-size: 2.2rem; font-weight: 700; text-shadow: 2px 2px 4
 .view-button, .download-button { text-decoration: none; padding: 8px 14px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; transition: opacity 0.3s ease; }
 .view-button:hover, .download-button:hover { opacity: 0.85; }
 
-/* 🟢 CRITICAL FIX: Ensure the footer has no background or shadow */
+/* 🔴 FIX: Ensure footer background is absolutely none. */
 footer { 
     position: fixed; 
     bottom: 0; 
     left: 0; 
     width: 100%; 
     background: none !important; /* Force no background */
-    box-shadow: none !important;  /* Force no box-shadow */
     padding: 15px 0; 
     display: flex; 
     justify-content: center; 
@@ -240,8 +240,8 @@ footer {
     .search-box { flex-direction: column; }
     .result-item { flex-direction: column; align-items: flex-start; gap: 15px; }
     
-    /* 🟢 CRITICAL FIX: Ensure the footer has no background in the media query too. */
-    footer { position: relative; background: none !important; padding: 10px; box-shadow: none !important; }
+    /* 🔴 FIX: Ensure footer background is absolutely none in the media query too. */
+    footer { position: relative; background: none !important; padding: 10px; }
     
     .founders-container, .chancellor-desk { flex-direction: column; align-items: center; gap: 20px; text-align: center; }
     
@@ -251,6 +251,8 @@ footer {
         margin-top: 20px;
         justify-content: center;
         flex-wrap: wrap;
+        /* 🔴 FIX: Remove any default background from the container itself */
+        background: none !important; 
     }
 }
 /* New styles for the 'About College' stats section with icons */
@@ -291,3 +293,4 @@ footer {
 }
 
 /* End of new stats section styles */
+    
