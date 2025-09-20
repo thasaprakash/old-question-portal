@@ -33,11 +33,21 @@ body {
     z-index: 200;
 }
 
+/* FIX: This section is added to remove the white background from social icons and align them better. */
+.social-icons-container a {
+    display: inline-block; /* Allows padding and background to be applied */
+    background: none;      /* Remove background color */
+    border-radius: 50%;
+    padding: 0;            /* Remove padding */
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
+}
+
 .social-icons-container img {
     width: 30px;
     height: 30px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    cursor: pointer;
+    /* Optional: apply a filter if icon colors need to be adjusted for contrast */
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
 }
 
 .social-icons-container img:hover {
@@ -128,8 +138,19 @@ h1 { color: #fecb00; font-size: 2.2rem; font-weight: 700; text-shadow: 2px 2px 4
 .view-button, .download-button { text-decoration: none; padding: 8px 14px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; transition: opacity 0.3s ease; }
 .view-button:hover, .download-button:hover { opacity: 0.85; }
 
-/* FIX #2: REMOVE WHITE BACKGROUND FOR FOOTER BUTTONS */
-footer { position: fixed; bottom: 0; left: 0; width: 100%; background: none; padding: 15px 0; display: flex; justify-content: center; gap: 15px; z-index: 100; }
+/* FIX: This section is added to remove the white background from the footer. */
+footer { 
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    background: none; /* Removed the white background */
+    padding: 15px 0; 
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; 
+    z-index: 100; 
+}
 .footer-btn { background-color: rgba(0, 86, 179, 0.8); color: white; border: 1px solid rgba(255, 255, 255, 0.2); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; backdrop-filter: blur(5px); transition: background-color 0.3s ease; }
 .footer-btn:hover { background-color: #0056b3; }
 .footer-btn img {
@@ -217,7 +238,10 @@ footer { position: fixed; bottom: 0; left: 0; width: 100%; background: none; pad
     .university-logo { width: 90px; height: 90px; }
     .search-box { flex-direction: column; }
     .result-item { flex-direction: column; align-items: flex-start; gap: 15px; }
-    footer { position: relative; background-color: #f8f9fa; padding: 10px; }
+    
+    /* FIX: This section is added to remove the white background from the footer on mobile. */
+    footer { position: relative; background: none; padding: 10px; }
+    
     .founders-container, .chancellor-desk { flex-direction: column; align-items: center; gap: 20px; text-align: center; }
     
     /* Adjust social icons for smaller screens */
